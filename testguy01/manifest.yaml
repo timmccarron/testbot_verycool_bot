@@ -1,11 +1,11 @@
 # title of ticket template is required
-title: "My Template"
+title: "jacked and tanned template"
 
 # The next fields are optional:
 description: "Descrpition of the template"
-version: "0.0.6"
-authorName: "albert"
-authorEmail: "albert.lockett@sonraisecurity.com"
+version: "0.0.1"
+authorName: "chomnbo"
+authorEmail: "tim.mccarron@sonraisecurity.com"
 
 # one or more fields must be specified
 fields:
