@@ -1,0 +1,34 @@
+# title of ticket template is required
+title: "My Template"
+
+# The next fields are optional:
+description: "Descrpition of the template"
+version: "0.0.6"
+authorName: "albert"
+authorEmail: "albert.lockett@sonraisecurity.com"
+
+# one or more fields must be specified
+fields:
+  - name: "field1"
+    # if required field is not present, assume optional
+    required: true 
+
+    # types can be text, select, checkbox (boolean)?
+    type: "select"
+
+    # if type is select, provide additional configuration
+    select:
+      # gql source of search to use to populate select
+      search: "{ Users { items { srn name } } }"
+
+      # path within result to use when populating search
+      # if not present, use ["data", <first field>, "items"]
+      path: ["data", "Users", "items"]
+
+      # field from result to use as field value
+      # if not present, default to srn
+      valueField: "srn"
+
+      # fields to check in order to find value for select label
+      # if not present, default to [<valueField>]
+      labelFields: ["name", "srn"]
