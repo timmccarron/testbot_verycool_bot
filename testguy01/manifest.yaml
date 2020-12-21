@@ -9,7 +9,7 @@ authorEmail: "tim.mccarron@sonraisecurity.com"
 
 # one or more fields must be specified
 fields:
-  - name: "field1"
+  - name: "choose account"
     # if required field is not present, assume optional
     required: true 
 
@@ -19,16 +19,31 @@ fields:
     # if type is select, provide additional configuration
     select:
       # gql source of search to use to populate select
-      search: "{ Users { items { srn name } } }"
+      search: "{ Accounts { items { srn name account } } }"
 
       # path within result to use when populating search
       # if not present, use ["data", <first field>, "items"]
-      path: ["data", "Users", "items"]
+      path: ["data", "Accounts", "items"]
 
       # field from result to use as field value
       # if not present, default to srn
-      valueField: "srn"
+      valueField: "account"
 
       # fields to check in order to find value for select label
       # if not present, default to [<valueField>]
+      labelFields: ["name", "account", "srn"]
+
+  - name: "user"
+    required: true 
+    type: "select"
+    select:
+      # gql source of search to use to populate select
+      ##### <---------- NEW THING: variables
+      search: "query filteredUsers($accountId: String!){ Users(where: {account: {op: EQ value: $accountId}}) { items { srn name } } }"
+      searchVariabletoFieldIdMap: {
+          accountId: "choose account"
+      }
+      ##### ----------> END NEW THING
+      path: ["data", "Users", "items"]
+      valueField: "srn"
       labelFields: ["name", "srn"]
