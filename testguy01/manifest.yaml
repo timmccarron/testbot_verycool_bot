@@ -40,9 +40,9 @@ fields:
       # gql source of search to use to populate select
       ##### <---------- NEW THING: variables
       search: "query filteredUsers($accountId: String!){ Users(where: {account: {op: EQ value: $accountId}}) { items { srn name } } }"
-      searchVariabletoFieldIdMap: {
-          accountId: "choose account"
-      }
+      searchVariabletoFieldIdMap:
+        accountId: "choose account"
+      
       ##### ----------> END NEW THING
       path: ["data", "Users", "items"]
       valueField: "srn"
