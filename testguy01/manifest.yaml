@@ -3,7 +3,7 @@ title: "jacked and tanned template"
 
 # The next fields are optional:
 description: "Descrpition of the template"
-version: "0.0.1"
+version: "0.0.2"
 authorName: "chomnbo"
 authorEmail: "tim.mccarron@sonraisecurity.com"
 
@@ -12,6 +12,7 @@ fields:
   - name: "choose account"
     # if required field is not present, assume optional
     required: true 
+    description: "this is the account descroption"
 
     # types can be text, select, checkbox (boolean)?
     type: "select"
@@ -33,9 +34,10 @@ fields:
       # if not present, default to [<valueField>]
       labelFields: ["name", "account", "srn"]
 
-  - name: "user"
+  - name: "choose user"
     required: true 
     type: "select"
+    description: "this is the user descroption"
     select:
       # gql source of search to use to populate select
       ##### <---------- NEW THING: variables
